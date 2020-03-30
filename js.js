@@ -1,17 +1,72 @@
-const num = 266219; // Создаю переменную num со значением 266219 (тип данных число)
+'use stict';
 
-const arr = num.toString().split(''); // Преобразую число в массив
+// Переменная lang может принимать 2 значения: 'ru' 'en'.
+const lang = 'en';
 
-let result = 1; // Создаю переменную в которой хранится результат
-
-for (let i = 0; i < arr.length; i++) { // Осуществляю умножение каждого числа массива и закидываю результат в result
-    result = result * Number(arr[i]);
+// Написать условия при котором в зависимости от значения lang будут выводится дни недели на русском или английском языке. 
+// a) через if
+if (lang === 'ru') {
+    console.log('Понедельник');
+    console.log('Вторник');
+    console.log('Среда');
+    console.log('Четверг');
+    console.log('Пятница');
+    console.log('Суббота');
+    console.log('Воскресение');
+} else {
+    console.log('Monday');
+    console.log('Tuesday');
+    console.log('Wednesday');
+    console.log('Thursday');
+    console.log('Friday');
+    console.log('Saturday');
+    console.log('Sunday');
 }
 
-console.log(result); // Вывожу в консоль произведение (умножение) цифр этого числа
+// b) через switch-case 
+switch (lang) {
+    case 'ru' :
+        console.log('Понедельник');
+        console.log('Вторник');
+        console.log('Среда');
+        console.log('Четверг');
+        console.log('Пятница');
+        console.log('Суббота');
+        console.log('Воскресение');
+        break;
+    case 'en' :
+        console.log('Monday');
+        console.log('Tuesday');
+        console.log('Wednesday');
+        console.log('Thursday');
+        console.log('Friday');
+        console.log('Saturday');
+        console.log('Sunday');
+        break;
+}
 
-result = result ** 3; // Полученный результат возвожу в степень 3, используя только 1 оператор
+// c) через многомерный массив без if и switch
+const mas = new Map( [
+    [
+        'ru',
+        ['Понедельник, Вторник, Среда, Четверг, Пятница Суббота, Воскресение']
+    ],
+    [
+        'en',
+        ['Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday']
+    ]
+]);
 
-const twoNumbersResult = result.toString().slice(0, 2); // Создаю новую переменную в которой осуществляю преобразование числа в строку и вырезаю первые два символа
+console.log(mas.get(lang).join());
 
-alert(Number(twoNumbersResult));  // Преобразую строку в число и вывожу на экран первые 2 цифры полученного числа
+/* 
+    У нас есть переменная namePerson. 
+    Если значение этой переменной “Артем” то вывести в консоль “директор”, 
+    если значение “Максим” то вывести в консоль “преподаватель”, 
+    с любым другим значением вывести в консоль “студент”
+
+	Решить задачу с помощью нескольких тернарных операторов, без использования if или switch
+*/
+
+const namePerson = 'Артем';
+namePerson === 'Артем' ? console.log('Директор') : namePerson === 'Максим' ? console.log('Преподаватель') : console.log('Студент');
