@@ -1,19 +1,24 @@
-const func = (str) => {
-    if (typeof str !== 'string') {
-        console.log('Не строка!');
-    } else {
+const arr = ['435234234', '43452343', '623742341', '26342345', '7353123123', '34143134132', '123413453'];
+arr.forEach((item) => {
+    if (item[0] === '2' || item[0] === '4') {
+        console.log(item);
+    }
+});
 
-        str = str.trim();
-
-        if (str.length > 30) {
-            // str = str.slice(0, 30) + '...';
-            // str = str.substring(0, 30) + '...';
-            str = str.substr(0, 30) + '...';
-            console.log(str);
-        } else {
-            return str;
+const isNatural = (number) => {
+    if (number < 2) {
+        return false;
+    }
+    for (let i = 2; i < number; i++) {
+        if (number % i === 0) {
+            return false;
         }
     }
+    return true;
 };
 
-func('      Ехал грека через реку видит грека в реке рак зомбак, рак за руку греку цап, цап царап и грека рак');
+for (let i = 0; i < 100; i++) {
+    if (isNatural(i)) {
+        console.log(`Делители ${i}: 1 и ${i}`);
+    }
+}
