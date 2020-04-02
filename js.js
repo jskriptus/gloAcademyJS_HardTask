@@ -1,51 +1,24 @@
-const startGame = () => {
+const arr = ['435234234', '43452343', '623742341', '26342345', '7353123123', '34143134132', '123413453'];
+arr.forEach((item) => {
+    if (item[0] === '2' || item[0] === '4') {
+        console.log(item);
+    }
+});
 
-    let count = 10; // колличество попыток
-
-    // Функция которая проверяет является ли переданный аргумент числом
-    function isNumber(n) {
-        if (typeof n !== 'string') {
+const isNatural = (number) => {
+    if (number < 2) {
+        return false;
+    }
+    for (let i = 2; i < number; i++) {
+        if (number % i === 0) {
             return false;
         }
-        return !isNaN(parseFloat(n)) && isFinite(n);
     }
-
-    // Функция которая генерирует число по заданному интервалу от и до
-    const generatesNum = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    };
-
-    // Присваиваем переменной сгенерированное число
-    const generatedNum = generatesNum(1, 100);
-
-    const game = (randomNum) => {
-        let enterVal = prompt('Угадай число от 1 до 100'); // Спрашиваем пользователя
-        let enterNum = Number(enterVal);
-
-        if (count === 0) {
-            let gameOver = confirm('Попытки закончились, хотите сыграть еще?');
-            return gameOver && startGame();
-        } else if (enterNum === randomNum) {
-            let gameWin = confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
-            return gameWin && startGame();
-        } else if (enterVal === null ) {
-            alert('Досвидания!');
-            return;
-        } else if (!isNumber(enterVal)) {
-            alert('Введи число!');
-            game(randomNum);
-        } else if (enterNum > randomNum && enterNum !== 0) {
-            --count;
-            alert(`Загаданное число меньше, осталось попыток: ${count}`);
-            game(randomNum);
-        } else if (enterNum < randomNum && enterNum !== 0) {
-            --count;
-            alert(`Загаданное число больше, осталось попыток: ${count}`);
-            game(randomNum);
-        }
-    };
-
-    game(generatedNum);
+    return true;
 };
 
-startGame();
+for (let i = 0; i < 100; i++) {
+    if (isNatural(i)) {
+        console.log(`Делители ${i}: 1 и ${i}`);
+    }
+}
