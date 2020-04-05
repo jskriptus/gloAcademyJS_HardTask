@@ -1,24 +1,21 @@
-const arr = ['435234234', '43452343', '623742341', '26342345', '7353123123', '34143134132', '123413453'];
-arr.forEach((item) => {
-    if (item[0] === '2' || item[0] === '4') {
-        console.log(item);
-    }
-});
+/*
+! Создать массив week и записать в него дни недели в виде строк
+* Вывести на экран все дни недели
+* Каждый из них с новой строчки
+* Выходные дни - курсивом
+* Текущий день - жирным шрифтом(использовать объект даты)
+*/
 
-const isNatural = (number) => {
-    if (number < 2) {
-        return false;
-    }
-    for (let i = 2; i < number; i++) {
-        if (number % i === 0) {
-            return false;
-        }
-    }
-    return true;
-};
+let days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресение'];
 
-for (let i = 0; i < 100; i++) {
-    if (isNatural(i)) {
-        console.log(`Делители ${i}: 1 и ${i}`);
-    }
+let nowDate = new Date();
+let weekday = nowDate.getDay();
+
+for (let i in days) {
+    if (days[i] === 'Суббота' || days[i] === 'Воскресение') {
+        days[i] = days[i].italics();
+    } else if (+i === weekday) {
+        days[i] = days[i].bold();
+    } 
 }
+document.write(days.join('<br />'));
