@@ -7,15 +7,19 @@
 */
 
 let days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресение'];
+let todayDate = new Date();
+let todayDay = todayDate.getDay();
 
-let nowDate = new Date();
-let weekday = nowDate.getDay();
-
-for (let i in days) {
-    if (days[i] === 'Суббота' || days[i] === 'Воскресение') {
+for (let i = 0; i < days.length; i++) {
+    if (i === 5 || i === 6) {
         days[i] = days[i].italics();
-    } else if (+i === weekday) {
+    } 
+    if (todayDay === 0 && i === 6) {
         days[i] = days[i].bold();
     } 
+    if (todayDay === i + 1) {
+        days[i] = days[i].bold();
+    }
 }
+
 document.write(days.join('<br />'));
