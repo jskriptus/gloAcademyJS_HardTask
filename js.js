@@ -25,7 +25,6 @@ const getCorrectHour = (hour) => {
     }
 }
 
-
 const todayDateOne = () => {
     let currentDate = new Date(),
         currentWeekdayInWords = getWeekDay(currentDate), // Храним текущий день недели словами
@@ -43,10 +42,16 @@ setInterval(() => {
     console.log(todayDateOne());
 }, 1000);
 
+
+
+
+
 /*
 ! Выведите на страницу текущую дату и время в формате: 
 * '04.02.2020 - 21:05:33' (1 БАЛЛ)
 */
+
+// Первый способ
 
 const addZero = (num) => {
     if (num >= 0 && num <= 9) {
@@ -71,3 +76,19 @@ const todayDateTwo = () => {
 setInterval(() => {
     console.log(todayDateTwo());
 }, 1000);
+
+// Второй способ
+
+let todayDateThree = new Date().toLocaleString('ru', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+});
+
+let todayDateThreeClock = new Date().toLocaleString('ru', {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+});
+
+console.log(todayDateThree + ' - ' + todayDateThreeClock);
