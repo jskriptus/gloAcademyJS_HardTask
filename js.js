@@ -3,17 +3,17 @@
 * 'Сегодня Вторник, 4 февраля 2020 года, 21 час 5 минут 33 секунды'  (1 БАЛЛ)
 */
 
-const getWeekDay = (date) => { // функция возвращает текущий день недели
-    let week = ['Воскресение', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
-    return week[date.getDay()];
-};
+let getWeekDay = new Date().toLocaleString('ru', {
+    weekday: 'long',
 
-const getMonthDay = (date) => { // функция возвращает текущий месяц
-    let month = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июля', 'Июня', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+});
 
-    return month[date.getMonth()];
-};
+let getMonthDay = new Date().toLocaleString('ru', {
+    month: 'long',
+});
+
+
 
 const getCorrectHour = (hour) => {
     if ((hour >= 2 && hour <= 4) || (hour >= 22 && hour <= 24)) {
@@ -23,20 +23,20 @@ const getCorrectHour = (hour) => {
     } else if (hour >= 5 && hour <= 20) {
         return 'часов';
     }
-}
+};
 
 const todayDateOne = () => {
     let currentDate = new Date(),
-        currentWeekdayInWords = getWeekDay(currentDate), // Храним текущий день недели словами
+        currentWeekdayInWords = getWeekDay, // Храним текущий день недели словами
         currentDay = currentDate.getDate(), // Храним текущий день месяца цифрами
-        currentMonthInWords = getMonthDay(currentDate), // Храним текущий месяц словами
+        currentMonthInWords = getMonthDay, // Храним текущий месяц словами
         currentYear = currentDate.getFullYear(), // Храним текущий год
         currentHour = currentDate.getHours(), // Храним текущий час
         currentMinutes = currentDate.getMinutes(), // Храним текущие минуты
         currentSeconds = currentDate.getSeconds(); // Храним текущие секунды
 
     return `Сегодня ${currentWeekdayInWords}, ${currentDay} ${currentMonthInWords} ${currentYear} года, ${currentHour} ${getCorrectHour(currentHour)} ${currentMinutes} минут ${currentSeconds} секунды`;
-}
+};
 
 setInterval(() => {
     console.log(todayDateOne());
@@ -71,7 +71,7 @@ const todayDateTwo = () => {
         currentSeconds = currentDate.getSeconds(); // Храним текущие секунды
 
     return `${addZero(currentDay)}.${addZero(currentMonth + 1)}.${currentYear} - ${addZero(currentHour)}:${addZero(currentMinutes)}:${addZero(currentSeconds)}`;
-}
+};
 
 setInterval(() => {
     console.log(todayDateTwo());
